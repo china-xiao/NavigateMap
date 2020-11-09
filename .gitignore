@@ -1,10 +1,15 @@
 # Created by .ignore support plugin (hsz.mobi)
+
+### idea
+.idea
+NavigateMap.iml
+
 ### Java template
 # Compiled class file
-*.class
+.class
 
 # Log file
-*.log
+.log
 
 # BlueJ files
 *.ctxt
@@ -13,8 +18,8 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
-*.war
+.jar
+.war
 *.nar
 *.ear
 *.zip
