@@ -1,0 +1,60 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /web
+    jsp:
+      init-parameters:
+        development: true  #开启jsp热部署
+  banner:
+    location: banner.txt
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/navigatemap?failOverReadOnly=false&loadBalanceBlacklistTimeout=5000&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: root
+    password: root
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: true
+    testOnReturn: false
+    druid:
+      filter:
+        slf4j:
+          enabled: true
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 10000
+          merge-sql: true
+      web-stat-filter:
+        session-stat-enable: true
+        profile-enable: true
+      aop-patterns: com.xcky.*
+  mvc:
+    view:
+#      prefix: /WEB-INF/pages/
+      prefix: /
+      suffix: .jsp
+  #  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+  main:
+    allow-bean-definition-overriding: true
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+mybatis-plus:
+  mapper-locations: classpath*:/com/alibaba/**/mapper/*.xml
+  type-aliases-package: com.alibaba.**.entity
+  configuration:
+    mapUnderscoreToCamelCase: true
+logging:
+  level:
+    com.i12368.mapper.dao: debug
