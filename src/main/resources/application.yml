@@ -2,15 +2,18 @@ server:
   port: 8080
   servlet:
     context-path: /web
+    jsp:
+      init-parameters:
+        development: true  #开启jsp热部署
   banner:
     location: banner.txt
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.1.100:3306/judicial_middle?failOverReadOnly=false&loadBalanceBlacklistTimeout=5000&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/navigatemap?failOverReadOnly=false&loadBalanceBlacklistTimeout=5000&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
     username: root
-    password: Glzx@2019
+    password: root
     initialSize: 1
     minIdle: 3
     maxActive: 20
@@ -34,8 +37,13 @@ spring:
         session-stat-enable: true
         profile-enable: true
       aop-patterns: com.xcky.*
-  resources:
-    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:${system.basePath}
+  mvc:
+    view:
+#      prefix: /WEB-INF/pages/
+      prefix: /
+      suffix: .jsp
+  #  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
   main:
     allow-bean-definition-overriding: true
   servlet:

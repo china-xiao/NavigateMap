@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.web.dao.ISysModuleMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.alibaba.web.entity.po.SysModule">
+        <id column="module_id" property="moduleId" />
+        <result column="parent_id" property="parentId" />
+        <result column="parent_name" property="parentName" />
+        <result column="name" property="name" />
+        <result column="is_leaf" property="isLeaf" />
+        <result column="cpermission" property="cpermission" />
+        <result column="curl" property="curl" />
+        <result column="ctype" property="ctype" />
+        <result column="state" property="state" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="display_order" property="displayOrder" />
+        <result column="icon" property="icon" />
+        <result column="is_hidden" property="isHidden" />
+        <result column="created_id" property="createdId" />
+        <result column="created_name" property="createdName" />
+        <result column="updated_id" property="updatedId" />
+        <result column="updated_name" property="updatedName" />
+        <result column="created" property="created" />
+        <result column="updated" property="updated" />
+    </resultMap>
+    <select id="findByBelong" resultType="com.alibaba.web.entity.po.SysModule">
+        SELECT * FROM sys_module WHERE belong=#{belong}
+    </select>
+    <!--userId-->
+    <select id="findByUserId" resultType="com.alibaba.web.entity.po.SysModule">
+        SELECT DISTINCT
+        	p.*
+        FROM
+        	sys_user u
+        INNER JOIN sys_role_user ur ON ur.user_id = u.user_id
+        INNER JOIN sys_role r ON r.role_id = ur.role_id
+        LEFT JOIN sys_role_module rp ON rp.role_id = r.role_id
+        LEFT JOIN sys_module p ON rp.module_id = p.module_id
+        WHERE
+        	u.user_id = #{userId}
+        AND p.is_deleted = 0
+        ORDER BY
+        	p.display_order,
+        	p.created
+    </select>
+
+</mapper>

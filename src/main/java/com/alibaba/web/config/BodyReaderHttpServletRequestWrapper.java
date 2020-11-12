@@ -1,6 +1,6 @@
 package com.alibaba.web.config;
 
-import com.alibaba.web.utils.StreamUtils;
+import com.alibaba.web.common.utils.StreamUtils;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;

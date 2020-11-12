@@ -1,4 +1,4 @@
-package com.alibaba.web;
+package com.alibaba.web.config;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,6 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.service.Parameter;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,6 @@ import java.util.List;
  **/
 //swagger2的配置文件，在项目的启动类的同级文件建立
 @Configuration
-@EnableSwagger2
 //是否开启swagger，正式环境一般是需要关闭的（避免不必要的漏洞暴露！），可根据springboot的多环境配置进行设置
 @ConditionalOnProperty(name = "swagger.enable",  havingValue = "true")
 public class Swagger2 {
@@ -34,8 +32,9 @@ public class Swagger2 {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo()).useDefaultResponseMessages(false)
-                .globalOperationParameters(globalOperationParameters())
+                .apiInfo(apiInfo())
+//                .useDefaultResponseMessages(false)
+//                .globalOperationParameters(globalOperationParameters())
                 .select()
                 // 为当前包路径
                 .apis(RequestHandlerSelectors.basePackage("com.alibaba.web.controller")).paths(PathSelectors.any())

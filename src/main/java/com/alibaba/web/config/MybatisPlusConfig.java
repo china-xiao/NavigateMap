@@ -13,7 +13,7 @@ public class MybatisPlusConfig {
 
     /**
      * 分页插件配置
-     * @author weiyibin
+     * @author xiaoxh
      * @date 2019年1月9日10:46:43
      */
     @Bean

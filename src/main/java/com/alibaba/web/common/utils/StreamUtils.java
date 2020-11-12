@@ -1,4 +1,4 @@
-package com.alibaba.web.utils;
+package com.alibaba.web.common.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

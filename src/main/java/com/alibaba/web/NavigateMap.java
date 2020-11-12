@@ -1,8 +1,12 @@
 package com.alibaba.web;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @Author: xiaoxh
@@ -12,7 +16,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  **/
 @SpringBootApplication
 @EnableScheduling
-public class NavigateMap {
+@EnableSwagger2
+@MapperScan(value = {"com.alibaba.**.dao"})
+public class NavigateMap extends SpringBootServletInitializer {
+
+    public static ApplicationContext cs;
+
+
     public static void main(String[] args) {
         SpringApplication.run(NavigateMap.class, args);
     }

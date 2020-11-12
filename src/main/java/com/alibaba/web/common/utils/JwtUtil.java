@@ -1,4 +1,4 @@
-package com.alibaba.web.utils;
+package com.alibaba.web.common.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;

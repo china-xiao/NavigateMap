@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.web.dao.ISysUserMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.alibaba.web.entity.po.User">
+        <id column="user_id" property="userId" />
+        <result column="email" property="email" />
+        <result column="user_name" property="userName" />
+        <result column="password" property="password" />
+        <result column="state" property="state" />
+        <result column="company_id" property="companyId" />
+        <result column="company_name" property="companyName" />
+        <result column="dept_id" property="deptId" />
+        <result column="dept_name" property="deptName" />
+        <result column="gender" property="gender" />
+        <result column="telephone" property="telephone" />
+        <result column="birthday" property="birthday" />
+        <result column="degree" property="degree" />
+        <result column="salary" property="salary" />
+        <result column="remark" property="remark" />
+        <result column="is_deleted" property="isDeleted" />
+        <result column="created_id" property="createdId" />
+        <result column="created_name" property="createdName" />
+        <result column="updated_id" property="updatedId" />
+        <result column="updated_name" property="updatedName" />
+        <result column="created" property="created" />
+        <result column="updated" property="updated" />
+    </resultMap>
+    <insert id="insertUserRole">
+        INSERT INTO sys_role_user VALUES (#{userid},#{roleId})
+    </insert>
+    <delete id="deleteUserRoles">
+        DELETE FROM sys_role_user WHERE user_id=#{userid}
+    </delete>
+    <select id="findByEmail" resultType="com.alibaba.web.entity.po.User">
+        SELECT * FROM sys_user WHERE email = #{email}
+    </select>
+    <select id="findAll" resultType="com.alibaba.web.entity.po.User">
+        SELECT * FROM sys_user WHERE company_id=#{companyId}
+    </select>
+
+</mapper>
