@@ -1,7 +1,7 @@
 package com.alibaba.web.service;
 
 import com.alibaba.web.entity.po.SysLog;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

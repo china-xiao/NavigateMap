@@ -38,7 +38,6 @@ public class LoginController extends BaseController{
             if(StringUtils.isEmpty(email)||StringUtils.isEmpty(password)){
                 return "redirect:/login.jsp";
             }
-
             //1、获得Subject对象
             Subject subject = SecurityUtils.getSubject();
             //2、构建用户名和密码对象 :AuthenticationToken
@@ -66,6 +65,11 @@ public class LoginController extends BaseController{
     public String logout(){
         SecurityUtils.getSubject().logout();   //登出
         return "forward:login.jsp";
+    }
+
+    @RequestMapping(value = "/home",name = "跳转首页")
+    public String home(){
+        return "home/home";
     }
 
 

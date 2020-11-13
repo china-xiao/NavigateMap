@@ -1,8 +1,7 @@
 package com.alibaba.web.dao;
 
 import com.alibaba.web.entity.po.SsCompany;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
 
@@ -14,7 +13,7 @@ import java.util.List;
  * @author xiaoxh
  * @since 2020-11-10
  */
-@Mapper
+
 public interface ISsCompanyMapper extends BaseMapper<SsCompany> {
 
     List<SsCompany> findAll();

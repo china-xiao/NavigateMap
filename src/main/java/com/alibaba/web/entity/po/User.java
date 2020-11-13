@@ -1,8 +1,8 @@
 package com.alibaba.web.entity.po;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -86,7 +86,7 @@ public class User implements Serializable {
     /**
      * 学历
      */
-    @ApiModelProperty("学历")
+    @ApiModelProperty("账号等级")
     private Integer degree;
     /**
      * 薪资

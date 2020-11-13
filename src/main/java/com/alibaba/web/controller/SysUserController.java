@@ -68,10 +68,10 @@ public class SysUserController extends BaseController{
         user.setCompanyName(companyName);
         if(StringUtils.isEmpty(user.getUserId())){
             //保存
-            userService.save(user);
+            userService.toSave(user);
         }else{
             //修改
-            userService.update(user);
+            userService.toUpdate(user);
         }
         return "redirect:/system/user/list.do";
     }

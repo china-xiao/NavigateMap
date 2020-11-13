@@ -1,7 +1,7 @@
 package com.alibaba.web.service;
 
 import com.alibaba.web.entity.po.User;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
 
 /**
@@ -18,9 +18,9 @@ public interface ISysUserService extends IService<User> {
 
     PageInfo findAll(String companyId, int page, int size);
 
-    void save(User user);
+    void toSave(User user);
 
-    void update(User user);
+    void toUpdate(User user);
 
     void delete(String id);
 

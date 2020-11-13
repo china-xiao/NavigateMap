@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <header class="main-header">
     <a href="all-admin-index.html" class="logo">
-        <span class="logo-mini"><img src="../img/logo.png"></span>
+        <span class="logo-mini"><img src="img/logo.png"></span>
         <span class="logo-lg">
-                    <img src="../img/export.png">
-                    <i> SaaS外贸进出口平台</i>
+                    <img src="img/export.png">
+                    <i> 遨游物联网云平台</i>
                 </span>
     </a>
 
@@ -26,7 +26,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/user2-160x160.jpg1" class="img-circle" alt="User Image">
+                                            <img src="img/user2-160x160.jpg1" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             系统消息
@@ -38,7 +38,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="img/user3-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             团队消息
@@ -50,7 +50,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="img/user4-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Developers
@@ -62,7 +62,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="img/user3-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Sales Department
@@ -74,7 +74,7 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="../img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                            <img src="img/user4-128x128.jpg" class="img-circle" alt="User Image">
                                         </div>
                                         <h4>
                                             Reviewers
@@ -211,39 +211,39 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
                         <span class="hidden-xs"> ${sessionScope.loginUser.userName}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
                                 ${sessionScope.loginUser.userName}
                             </p>
                         </li>
-                        <!-- Menu Body
-                <li class="user-body">
-                    <div class="row">
-                        <div class="col-xs-4 text-center">
-                            <a href="#">Followers</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <a href="#">Sales</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                            <a href="#">Friends</a>
-                        </div>
-                    </div>
-                </li>-->
+                <%--Menu Body--%>
+<%--                <li class="user-body">--%>
+<%--                    <div class="row">--%>
+<%--                        <div class="col-xs-4 text-center">--%>
+<%--                            <a href="#">Followers</a>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-xs-4 text-center">--%>
+<%--                            <a href="#">Sales</a>--%>
+<%--                        </div>--%>
+<%--                        <div class="col-xs-4 text-center">--%>
+<%--                            <a href="#">Friends</a>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </li>--%>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
                                 <a href="#" class="btn btn-default btn-flat">修改密码</a>
                             </div>
                             <div class="pull-right">
-                                <a href="/logout.do" class="btn btn-default btn-flat">注销</a>
+                                <a href="/web/logout" class="btn btn-default btn-flat">注销</a>
                             </div>
                         </li>
                     </ul>

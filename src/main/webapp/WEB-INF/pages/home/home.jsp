@@ -5,8 +5,8 @@
     <!-- 内容头部 -->
     <section class="content-header">
         <h1>
-            模块名称
-            <small>模块功能</small>
+            遨游物联网信息云平台
+            <small>www.aoyou.cn</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
@@ -20,11 +20,10 @@
     <section class="content">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">模块操作</h3>
+                <h3 class="box-title">声明</h3>
             </div>
             <div class="box-body">
-                如果你要新建一个模块页，你可以复制本文件 admin-blank.html ，不用重新搭建框架代码。<br>
-                本页元素有：模块主标题、模块子标题、导航位置、模块操作区域
+                本项目由xiaoxh独立开发完成的开源项目,不得用于任何商业用途,如有商标侵权本人不承担任何后果<br>
             </div>
         </div>
     </section>

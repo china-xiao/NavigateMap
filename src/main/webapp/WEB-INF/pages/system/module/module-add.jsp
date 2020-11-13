@@ -22,7 +22,7 @@
         <section class="content">
             <div class="panel panel-default">
                 <div class="panel-heading">用户信息</div>
-                <form id="editForm" action="/system/module/edit.do" method="post">
+                <form id="editForm" action="/web/system/module/edit" method="post">
                     <input type="hidden" name="id" value="${module.id}">
                     <input type="hidden" id="parentName" name="parentName" value="${module.parentName}">
                     <div class="row data-type" style="margin: 0px">
@@ -82,14 +82,14 @@
 
                         <div class="col-md-2 title">排序号</div>
                         <div class="col-md-4 data">
-                            <input type="text" class="form-control" placeholder="排序号" name="orderNo" value="${module.orderNo}">
+                            <input type="text" class="form-control" placeholder="排序号" name="orderNo" value="${module.displayOrder}">
                         </div>
 
 
-                        <div class="col-md-2 title rowHeight2x">备注</div>
-                        <div class="col-md-4 data rowHeight2x">
-                            <textarea class="form-control" rows="3" name="remark">${module.remark}</textarea>
-                        </div>
+<%--                        <div class="col-md-2 title rowHeight2x">备注</div>--%>
+<%--                        <div class="col-md-4 data rowHeight2x">--%>
+<%--                            <textarea class="form-control" rows="3" name="remark">${module.remark}</textarea>--%>
+<%--                        </div>--%>
 
 
                     </div>

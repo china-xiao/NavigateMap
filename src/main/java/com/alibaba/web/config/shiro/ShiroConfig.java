@@ -29,23 +29,25 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setUnauthorizedUrl("/notRole");
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-//        filterChainDefinitionMap.put("/webjars/**", "anon");
-//        filterChainDefinitionMap.put("/swagger**/**", "anon");
-//        filterChainDefinitionMap.put("/**/swagger**/**", "anon");
-//        filterChainDefinitionMap.put("/**.js", "anon");
-//        filterChainDefinitionMap.put("/login", "anon");
-//        filterChainDefinitionMap.put("/", "anon");
-//        filterChainDefinitionMap.put("/front/**", "anon");
-//        filterChainDefinitionMap.put("/api/**", "anon");
-//
-//        filterChainDefinitionMap.put("/admin/**", "authc");
-//        filterChainDefinitionMap.put("/user/**", "authc");
-        // 添加自己的过滤器并且取名为jwt
-//        Map<String, Filter> filterMap = new HashMap<String, Filter>(1);
-//        filterMap.put("jwt", new JwtFilter());
-//        shiroFilterFactoryBean.setFilters(filterMap);
+        //swagger接口权限 开放
+        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        filterChainDefinitionMap.put("/webjars/**", "anon");
+        filterChainDefinitionMap.put("/v2/**", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/**", "anon");
+
+
+        filterChainDefinitionMap.put("/index.jsp*", "anon");
+        filterChainDefinitionMap.put("/login.jsp*", "anon");
+        filterChainDefinitionMap.put("/unauthorized.jsp*", "anon");
+        filterChainDefinitionMap.put("/login*", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/logout", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/plugins/**", "anon");
+        filterChainDefinitionMap.put("/make/**", "anon");
         //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截 剩余的都需要认证
-        filterChainDefinitionMap.put("/**", "anon");
+        filterChainDefinitionMap.put("/**", "anon ");
+//        filterChainDefinitionMap.put("/**", "authc ");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

@@ -5,7 +5,7 @@ import com.alibaba.web.config.shiro.MD5.MD5Pwd;
 import com.alibaba.web.dao.ISysUserMapper;
 import com.alibaba.web.entity.po.User;
 import com.alibaba.web.service.ISysUserService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,12 @@ public class SysUserServiceImpl extends ServiceImpl<ISysUserMapper, User> implem
 
     @Override
     public User findByEmail(String email) {
-        return userMapper.findByEmail(email);
+        try {
+            return userMapper.findByEmail(email);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -42,7 +47,7 @@ public class SysUserServiceImpl extends ServiceImpl<ISysUserMapper, User> implem
 
 
     @Override
-    public void save(User user) {
+    public void toSave(User user) {
         String pwd = user.getPassword();
         user.setUserId(UUID.randomUUID().toString());
         user.setPassword(MD5Pwd.MD5Pwd(user.getEmail(),user.getPassword()));
@@ -56,7 +61,7 @@ public class SysUserServiceImpl extends ServiceImpl<ISysUserMapper, User> implem
     }
 
     @Override
-    public void update(User user) {
+    public void toUpdate(User user) {
         userMapper.updateById(user);
     }
 

@@ -14,14 +14,14 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
     <!-- 页面meta /-->
-    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 <script>
     function deleteById() {
         var id = getCheckId()
         if(id) {
             if(confirm("你确认要删除此条记录吗？")) {
-                location.href="/company/delete.do?id="+id;
+                location.href="/web/company/delete?id="+id;
             }
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
@@ -59,7 +59,7 @@
                 <div class="pull-left">
                     <div class="form-group form-inline">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="/company/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
+                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="/web/company/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                         </div>
@@ -106,7 +106,7 @@
                         <td>${item.state ==0?'未审核':'已审核'}</td>
                         <td class="text-center">${item.balance}</td>
                         <td class="text-center">
-                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="/company/toUpdate.do?id=${item.id}"'>编辑</button>
+                            <button type="button" class="btn bg-olive btn-xs" onclick='location.href="/web/company/toUpdate?id=${item.id}"'>编辑</button>
                         </td>
                     </tr>
                     </c:forEach>
@@ -166,7 +166,7 @@
 
         <div class="box-footer">
             <jsp:include page="../common/page.jsp">
-                <jsp:param value="${ctx}/company/list.do" name="pageUrl"/>
+                <jsp:param value="${ctx}/company/list" name="pageUrl"/>
             </jsp:include>
         </div>
         <!-- /.box-footer-->

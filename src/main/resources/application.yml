@@ -39,8 +39,8 @@ spring:
       aop-patterns: com.xcky.*
   mvc:
     view:
-#      prefix: /WEB-INF/pages/
-      prefix: /
+      prefix: /WEB-INF/pages/
+#      prefix: /
       suffix: .jsp
   #  resources:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
@@ -57,4 +57,5 @@ mybatis-plus:
     mapUnderscoreToCamelCase: true
 logging:
   level:
-    com.i12368.mapper.dao: debug
+    com.alibaba.web.dao: debug
+

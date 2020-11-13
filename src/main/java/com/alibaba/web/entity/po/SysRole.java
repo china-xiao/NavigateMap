@@ -1,15 +1,13 @@
 package com.alibaba.web.entity.po;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableName;
-import java.io.Serializable;
-
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <p>
@@ -27,35 +25,35 @@ public class SysRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("role_id")
+
     private String roleId;
     private String name;
     private String remark;
-    @TableField("order_no")
+
     private BigDecimal orderNo;
-    @TableField("company_id")
+
     private String companyId;
-    @TableField("company_name")
+
     private String companyName;
     /**
      * 创建者id
      */
-    @TableField("created_id")
+
     private Long createdId;
     /**
      * 创建者名字
      */
-    @TableField("created_name")
+
     private String createdName;
     /**
      * 更新者id
      */
-    @TableField("updated_id")
+
     private Long updatedId;
     /**
      * 更新者名字
      */
-    @TableField("updated_name")
+
     private String updatedName;
     /**
      * 创建时间
@@ -68,7 +66,7 @@ public class SysRole implements Serializable {
     /**
      * 删除标识 0-正常1-删除
      */
-    @TableField("is_deleted")
+
     private Integer isDeleted;
 
 

@@ -3,7 +3,7 @@ package com.alibaba.web.service.impl;
 import com.alibaba.web.dao.ISysRoleModuleMapper;
 import com.alibaba.web.entity.po.SysRoleModule;
 import com.alibaba.web.service.ISysRoleModuleService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

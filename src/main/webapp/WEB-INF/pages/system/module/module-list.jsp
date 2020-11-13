@@ -8,9 +8,9 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>数据 - AdminLTE2定制版</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <title>模块管理</title>
+    <meta name="description" content="模块管理">
+    <meta name="keywords" content="模块管理">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 </head>
@@ -19,7 +19,7 @@
         var id = getCheckId()
         if(id) {
             if(confirm("你确认要删除此条记录吗？")) {
-                location.href="/system/module/delete.do?id="+id;
+                location.href="/web/system/module/delete?id="+id;
             }
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
@@ -34,7 +34,7 @@
         <small>模块管理</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="all-admin-index.html"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="/web/home"><i class="fa fa-dashboard"></i> 首页</a></li>
     </ol>
 </section>
 <!-- 内容头部 /-->
@@ -57,7 +57,7 @@
                 <div class="pull-left">
                     <div class="form-group form-inline">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="/system/module/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
+                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="/web/system/module/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                         </div>
@@ -101,7 +101,7 @@
                             <td>${o.ctype==0?'主菜单':o.ctype==1?'二级菜单':'按钮'}</td>
                             <td>${o.belong}</td>
                             <td>${o.state==0?'停用':'启用'}</td>
-                            <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/system/module/toUpdate.do?id=${o.id}"'>编辑</button></th>
+                            <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/web/system/module/toUpdate?id=${o.id}"'>编辑</button></th>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -110,7 +110,7 @@
         </div>
         <div class="box-footer">
             <jsp:include page="../../common/page.jsp">
-                <jsp:param value="${ctx}/system/module/list.do" name="pageUrl"/>
+                <jsp:param value="${ctx}/system/module/list" name="pageUrl"/>
             </jsp:include>
         </div>
     </div>

@@ -2,7 +2,6 @@ package com.alibaba.web.config.shiro.realm;
 
 import com.alibaba.web.entity.po.SysModule;
 import com.alibaba.web.entity.po.User;
-import com.alibaba.web.jwt.JwtToken;
 import com.alibaba.web.service.ISysModuleService;
 import com.alibaba.web.service.ISysUserService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,14 +33,15 @@ public class CustomRealm extends AuthorizingRealm {
     private ISysModuleService moduleService;
 
     /**
-     * 必须重写此方法，不然Shiro会报错
-     * @param token
+     * jwt必须重写此方法，不然Shiro会报错
+     * @param
      * @return
      */
-    @Override
-    public boolean supports(AuthenticationToken token) {
-        return token instanceof JwtToken;
-    }
+//    @Override
+//    public boolean supports(AuthenticationToken token) {
+//        return token instanceof JwtToken;
+//        return token instanceof ;
+//    }
 
 
 
@@ -71,14 +71,14 @@ public class CustomRealm extends AuthorizingRealm {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
         String email = upToken.getUsername();
         String userPwd = new String(upToken.getPassword());
-        log.info("当前德登录用户  账号:{},密码:{}",email,userPwd);
+        log.info("当前登录用户  账号:{},密码:{}",email,userPwd);
         //根据用户名从数据库获取密码
         User user = userService.findByEmail(email);
         if (user==null) {
             return null;
         }
         //交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配
-        return new SimpleAuthenticationInfo(email, user.getPassword(),
+        return new SimpleAuthenticationInfo(user, user.getPassword(),
                 ByteSource.Util.bytes(email + "salt"), getName());//MD5两次、salt=username+salt加密
     }
 }

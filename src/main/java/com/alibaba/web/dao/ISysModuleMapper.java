@@ -1,7 +1,7 @@
 package com.alibaba.web.dao;
 
 import com.alibaba.web.entity.po.SysModule;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,4 +19,13 @@ public interface ISysModuleMapper extends BaseMapper<SysModule> {
     List<SysModule> findByBelong(@Param("belong") int belong);
 
     List<SysModule> findByUserId(@Param("userId") String userId);
+
+    List<SysModule> findAll();
+
+    List<SysModule> findByRoleId(@Param("roleid") String roleid);
+
+    void delById(@Param("id") String id);
+
+    SysModule findById(@Param("id") String id);
+
 }

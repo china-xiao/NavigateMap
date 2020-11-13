@@ -1,10 +1,8 @@
 package com.alibaba.web.service;
 
 import com.alibaba.web.entity.po.SsCompany;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.github.pagehelper.PageInfo;
-
-import java.util.List;
 
 /**
  * <p>
@@ -16,16 +14,19 @@ import java.util.List;
  */
 public interface ISsCompanyService extends IService<SsCompany> {
 
-    List<SsCompany> findAll();
+    PageInfo<SsCompany> findAll(int page, int size);
 
-    void save(SsCompany company);
+    void toSave(SsCompany company);
 
-    SsCompany findById(String id);
+    void toUpdate(SsCompany company);
 
-    void update(SsCompany company);
+//
+//    SsCompany findById(String id);
+//
+//    void update(SsCompany company);
+//
+//    void delete(String id);
 
-    void delete(String id);
-
-    PageInfo findAll(int page, int size);
+//    PageInfo findAll(int page, int size);
 
 }

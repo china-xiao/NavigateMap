@@ -3,7 +3,7 @@ package com.alibaba.web.service.impl;
 import com.alibaba.web.dao.ISysDeptMapper;
 import com.alibaba.web.entity.po.SysDept;
 import com.alibaba.web.service.ISysDeptService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
