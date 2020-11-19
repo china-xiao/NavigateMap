@@ -51,7 +51,7 @@ public class SysModuleServiceImpl extends ServiceImpl<ISysModuleMapper, SysModul
                 moduleList =  moduleMapper.findByBelong(1);
             }else{
                 //执行RBAC权限模型查询
-                moduleList = moduleMapper.findByUserId(loginUser.getUserId());
+                moduleList = moduleMapper.findByUserId(loginUser.getId());
             }
             return moduleList;
     }
@@ -75,7 +75,7 @@ public class SysModuleServiceImpl extends ServiceImpl<ISysModuleMapper, SysModul
         LocalDateTime now = LocalDateTime.now();
         module.setId(UUID.randomUUID().toString());
         module.setCreated(now);
-        module.setCreatedId(user.getUserId());
+        module.setCreatedId(user.getId());
         module.setCreatedName(user.getUserName());
         module.setIsHidden(false);
         moduleMapper.insert(module);

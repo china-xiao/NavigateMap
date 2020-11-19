@@ -9,9 +9,9 @@
     <!-- 页面meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>数据 - AdminLTE2定制版</title>
-    <meta name="description" content="AdminLTE2定制版">
-    <meta name="keywords" content="AdminLTE2定制版">
+    <title>部门列表</title>
+    <meta name="description" content="部门列表">
+    <meta name="keywords" content="部门列表">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
 </head>
@@ -20,7 +20,7 @@
         var id = getCheckId()
         if(id) {
             if(confirm("你确认要删除此条记录吗？")) {
-                location.href="/system/dept/delete.do?id="+id;
+                location.href="/web/system/dept/delete?id="+id;
             }
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
@@ -58,9 +58,9 @@
                 <div class="pull-left">
                     <div class="form-group form-inline">
                         <div class="btn-group">
-                            <shiro:hasPermission name="新增部门">
-                                <button type="button" class="btn btn-default" title="新建" onclick='location.href="/system/dept/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
-                            </shiro:hasPermission>
+<%--                            <shiro:hasPermission name="新增部门">--%>
+                                <button type="button" class="btn btn-default" title="新建" onclick='location.href="/web/system/dept/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
+<%--                            </shiro:hasPermission>--%>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                         </div>
@@ -83,7 +83,7 @@
                         </th>
                         <th class="sorting">序号</th>
                         <th class="sorting">编号</th>
-                        <th class="sorting">上级</th>
+                        <th class="sorting">上级id</th>
                         <th class="sorting">名称</th>
                         <th class="text-center">操作</th>
                     </tr>
@@ -94,9 +94,9 @@
                             <td><input type="checkbox" name="id" value="${dept.id }"/></td>
                             <td>${st.count }</td>
                             <td>${dept.id }</td>
-                            <td>${dept.parent.deptName } </td>
-                            <td><a href="/system/dept/toUpdate.do?id=${dept.id }">${dept.deptName }</a></td>
-                            <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/system/dept/toUpdate.do?id=${dept.id}"'>编辑</button></th>
+                            <td>${dept.parentId } </td>
+                            <td><a href="/web/system/dept/toUpdate?id=${dept.id }">${dept.deptName }</a></td>
+                            <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/web/system/dept/toUpdate?id=${dept.id}"'>编辑</button></th>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -105,7 +105,7 @@
         </div>
         <div class="box-footer">
             <jsp:include page="../../common/page.jsp">
-                <jsp:param value="${ctx}/system/dept/list.do" name="pageUrl"/>
+                <jsp:param value="${ctx}/system/dept/list" name="pageUrl"/>
             </jsp:include>
         </div>
     </div>

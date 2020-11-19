@@ -2,6 +2,7 @@ package com.alibaba.web.service;
 
 import com.alibaba.web.entity.po.SysRole;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -18,4 +19,12 @@ public interface ISysRoleService extends IService<SysRole> {
     List<SysRole> findAllRoles(String companyId);
 
     List<SysRole> findByUserId(String id);
+
+    PageInfo<SysRole> findAll(String companyId, int page, int size);
+
+    void toSave(SysRole role);
+
+    void toUpdate(SysRole role);
+
+    void updateRoleModule(String roleid, String moduleIds);
 }

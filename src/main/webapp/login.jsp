@@ -26,7 +26,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="all-admin-index.html">遨游中国物联网云平台</a>
+        <a href="">遨游中国物联网云平台</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

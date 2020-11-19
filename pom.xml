@@ -153,6 +153,12 @@
         <artifactId>poi-ooxml</artifactId>
         <version>4.0.1</version>
       </dependency>
+      <!--Spring AOP 切面 模块 -->
+      <!-- SpringBoot 拦截器 -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+      </dependency>
     </dependencies>
 
 

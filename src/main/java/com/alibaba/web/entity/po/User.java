@@ -30,9 +30,9 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("user_id")
+    @TableId("id")
     @ApiModelProperty("用户id")
-    private String userId;
+    private String id;
     /**
      * 邮箱,账号
      */
@@ -74,7 +74,7 @@ public class User implements Serializable {
      * 性别
      */
     @ApiModelProperty("性别")
-    private String gender;
+    private Integer gender;
     /**
      * 联系方式
      */

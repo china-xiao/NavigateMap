@@ -56,7 +56,7 @@
         //页面加载事件
         $(document).ready(function(){
             //执行ajax请求
-            $.get("/system/role/initModuleData.do?roleid=${role.id}",function(data){
+            $.get("/web/system/role/initModuleData?roleid=${role.id}",function(data){
                 initDate(data);
             });
         });
@@ -123,7 +123,7 @@
                     </div>
                     <!--工具栏/-->
                     <!-- 树菜单 -->
-                    <form name="icform" id="icform" method="post" action="/system/role/updateRoleModule.do">
+                    <form name="icform" id="icform" method="post" action="/web/system/role/updateRoleModule">
                         <input type="hidden" name="roleid" value="${role.id}"/>
                         <input type="hidden" id="moduleIds" name="moduleIds" value=""/>
                         <div class="content_wrap">

@@ -36,12 +36,12 @@
         	p.*
         FROM
         	sys_user u
-        INNER JOIN sys_role_user ur ON ur.user_id = u.user_id
-        INNER JOIN sys_role r ON r.role_id = ur.role_id
-        LEFT JOIN sys_role_module rp ON rp.role_id = r.role_id
+        INNER JOIN sys_role_user ur ON ur.user_id = u.id
+        INNER JOIN sys_role r ON r.id = ur.role_id
+        LEFT JOIN sys_role_module rp ON rp.role_id = r.id
         LEFT JOIN sys_module p ON rp.module_id = p.id
         WHERE
-        	u.user_id = #{userId}
+        	u.id = #{userId}
         AND p.is_deleted = 0
         ORDER BY
         	p.display_order,
@@ -51,7 +51,12 @@
         SELECT * FROM sys_module
     </select>
     <select id="findByRoleId" resultType="com.alibaba.web.entity.po.SysModule">
-        SELECT * FROM sys_module WHERE role_id=#{roleid}
+        SELECT
+        sm.*
+        FROM
+        sys_module sm
+        LEFT JOIN sys_role_module srm ON srm.module_id=sm.id
+        WHERE srm.role_id=#{roleid}
     </select>
     <select id="findById" resultType="com.alibaba.web.entity.po.SysModule">
         SELECT * FROM sys_module WHERE id=#{id}

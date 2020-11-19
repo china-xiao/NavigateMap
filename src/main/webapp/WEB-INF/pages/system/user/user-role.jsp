@@ -18,7 +18,7 @@
 </head>
 <script>
     function formSubmit() {
-        document.icform.action="/system/user/changeRole.do"; //给表单的action属性赋值
+        document.icform.action="/web/system/user/changeRole"; //给表单的action属性赋值
         document.icform.submit(); //提交表单
     }
 </script>

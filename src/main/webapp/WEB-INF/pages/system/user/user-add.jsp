@@ -27,7 +27,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="/"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li><a href="/system/user/list.do">用户列表</a></li>
+            <li><a href="/web/system/user/list">用户列表</a></li>
         </ol>
     </section>
     <!-- 内容头部 /-->
@@ -38,7 +38,7 @@
         <!--订单信息-->
         <div class="panel panel-default">
             <div class="panel-heading">用户信息</div>
-            <form id="editForm" action="/system/user/edit.do" method="post">
+            <form id="editForm" action="/web/system/user/edit" method="post">
                 <input type="hidden" id="id" name="id" value="${user.id}">
                 <input type="hidden" id="deptName" name="deptName" value="${user.deptName}">
                 <div class="row data-type" style="margin: 0px">
@@ -80,16 +80,16 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2 title">入职时间</div>
-                    <div class="col-md-4 data">
-                        <div class="input-group date">
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" placeholder="入职时间"  name="joinDate" class="form-control pull-right"
-                                   value="${user.joinDate}" id="datepicker">
-                        </div>
-                    </div>
+<%--                    <div class="col-md-2 title">入职时间</div>--%>
+<%--                    <div class="col-md-4 data">--%>
+<%--                        <div class="input-group date">--%>
+<%--                            <div class="input-group-addon">--%>
+<%--                                <i class="fa fa-calendar"></i>--%>
+<%--                            </div>--%>
+<%--                            <input type="text" placeholder="入职时间"  name="joinDate" class="form-control pull-right"--%>
+<%--                                   value="${user.joinDate}" id="datepicker">--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
 
                     <div class="col-md-2 title">等级</div>
                     <div class="col-md-4 data">
@@ -109,10 +109,10 @@
                         </div>
                     </div>
 
-                    <div class="col-md-2 title">岗位</div>
-                    <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="岗位" name="station" value="${user.station}">
-                    </div>
+<%--                    <div class="col-md-2 title">岗位</div>--%>
+<%--                    <div class="col-md-4 data">--%>
+<%--                        <input type="text" class="form-control" placeholder="岗位" name="station" value="${user.station}">--%>
+<%--                    </div>--%>
                     <div class="col-md-2 title">电话</div>
                     <div class="col-md-4 data">
                         <input type="text" class="form-control" placeholder="电话" name="telephone" value="${user.telephone}">
@@ -128,14 +128,14 @@
                                    value="${user.birthday}" id="datepicker1">
                         </div>
                     </div>
-                    <div class="col-md-2 title">排序号</div>
-                    <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="排序号" name="orderNo" value="${user.orderNo}">
-                    </div>
-                    <div class="col-md-2 title">说明</div>
-                    <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="说明" name="remark" value="${user.remark}">
-                    </div>
+<%--                    <div class="col-md-2 title">排序号</div>--%>
+<%--                    <div class="col-md-4 data">--%>
+<%--                        <input type="text" class="form-control" placeholder="排序号" name="orderNo" value="${user.orderNo}">--%>
+<%--                    </div>--%>
+<%--                    <div class="col-md-2 title">说明</div>--%>
+<%--                    <div class="col-md-4 data">--%>
+<%--                        <input type="text" class="form-control" placeholder="说明" name="remark" value="${user.remark}">--%>
+<%--                    </div>--%>
                 </div>
             </form>
         </div>
@@ -154,9 +154,9 @@
 </div>
 <!-- 内容区域 /-->
 </body>
-<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="../../plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
-<link rel="stylesheet" href="../../css/style.css">
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js"></script>
+<link rel="stylesheet" href="css/style.css">
 <script>
     $('#datepicker').datepicker({
         autoclose: true,

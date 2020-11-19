@@ -5,7 +5,7 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.alibaba.web.entity.po.User">
-        <id column="user_id" property="userId" />
+        <id column="user_id" property="id" />
         <result column="email" property="email" />
         <result column="user_name" property="userName" />
         <result column="password" property="password" />
@@ -38,7 +38,7 @@
         SELECT * FROM sys_user WHERE email = #{email}
     </select>
     <select id="findAll" resultType="com.alibaba.web.entity.po.User">
-        SELECT * FROM sys_user WHERE company_id=#{companyId}
+        SELECT * FROM sys_user WHERE company_id=#{companyId} and is_deleted=0
     </select>
 
 </mapper>

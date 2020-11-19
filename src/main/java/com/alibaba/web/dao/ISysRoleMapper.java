@@ -20,4 +20,8 @@ public interface ISysRoleMapper extends BaseMapper<SysRole> {
     List<SysRole> findAllRoles(@Param("companyId") String companyId);
 
     List<SysRole> findByUserId(@Param("userId") String userId);
+
+    void deleteByRoleId(@Param("roleid") String roleid);
+
+    void insertRoleModule(@Param("roleid") String roleid, @Param("mid") String mid);
 }

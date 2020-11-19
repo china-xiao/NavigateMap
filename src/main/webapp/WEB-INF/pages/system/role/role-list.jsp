@@ -21,7 +21,7 @@
         var id = getCheckId()
         if(id) {
             if(confirm("你确认要删除此条记录吗？")) {
-                location.href="/system/role/delete.do?id="+id;
+                location.href="/web/system/role/delete?id="+id;
             }
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
@@ -31,7 +31,7 @@
     function findModuleByRoleId(){
         var id = getCheckId();
         if(id) {
-            location.href="/system/role/roleModule.do?roleid="+id;
+            location.href="/web/system/role/roleModule?roleid="+id;
         }else{
             alert("请勾选待处理的记录，且每次只能勾选一个")
         }
@@ -68,7 +68,7 @@
                 <div class="pull-left">
                     <div class="form-group form-inline">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="/system/role/toAdd.do"'><i class="fa fa-file-o"></i> 新建</button>
+                            <button type="button" class="btn btn-default" title="新建" onclick='location.href="/web/system/role/toAdd"'><i class="fa fa-file-o"></i> 新建</button>
                             <button type="button" class="btn btn-default" title="删除" onclick='deleteById()'><i class="fa fa-trash-o"></i> 删除</button>
                             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                             <button type="button" class="btn btn-default" title="权限" onclick="findModuleByRoleId()"><i class="fa fa-users"></i> 权限</button>
@@ -103,9 +103,9 @@
                         <td><input type="checkbox" name="id" value="${o.id}"/></td>
                         <td>${status.index+1}</td>
                         <td>${o.id}</td>
-                        <td><a href="/system/role/toUpdate.do?id=${o.id}">${o.name}</a></td>
+                        <td><a href="/web/system/role/toUpdate?id=${o.id}">${o.name}</a></td>
                         <td>${o.remark}</td>
-                        <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/system/role/toUpdate.do?id=${o.id}"'>编辑</button></th>
+                        <th class="text-center"><button type="button" class="btn bg-olive btn-xs" onclick='location.href="/web/system/role/toUpdate?id=${o.id}"'>编辑</button></th>
                     </tr>
                     </c:forEach>
                     </tbody>
@@ -114,7 +114,7 @@
         </div>
         <div class="box-footer">
             <jsp:include page="../../common/page.jsp">
-                <jsp:param value="${ctx}/system/role/list.do" name="pageUrl"/>
+                <jsp:param value="${ctx}/system/role/list" name="pageUrl"/>
             </jsp:include>
         </div>
     </div>

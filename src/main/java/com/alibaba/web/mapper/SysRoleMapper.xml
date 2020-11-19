@@ -18,6 +18,12 @@
         <result column="updated" property="updated" />
         <result column="is_deleted" property="isDeleted" />
     </resultMap>
+    <insert id="insertRoleModule">
+        INSERT INTO sys_role_module VALUES(#{roleid},#{mid})
+    </insert>
+    <delete id="deleteByRoleId">
+        DELETE FROM sys_role_module WHERE role_id=#{roleid}
+    </delete>
     <select id="findAllRoles" resultType="com.alibaba.web.entity.po.SysRole">
         SELECT * FROM sys_role WHERE company_id=#{companyId}
     </select>
@@ -26,9 +32,9 @@
         	r.*
         FROM
         	sys_user u
-        LEFT JOIN sys_role_user ru ON ru.user_id = u.user_id
-        LEFT JOIN sys_role r ON r.role_id=ru.role_id
-        WHERE u.user_id=#{userId}
+        LEFT JOIN sys_role_user ru ON ru.user_id = u.id
+        LEFT JOIN sys_role r ON r.id=ru.role_id
+        WHERE u.id=#{userId}
     </select>
 
 </mapper>

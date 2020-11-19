@@ -17,4 +17,7 @@ import java.util.List;
 public interface ISysDeptMapper extends BaseMapper<SysDept> {
 
     List<SysDept> findAll(@Param("companyId") String companyId);
+
+    List<SysDept> findList();
+
 }
