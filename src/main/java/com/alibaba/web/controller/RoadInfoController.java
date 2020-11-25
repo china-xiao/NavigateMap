@@ -6,6 +6,7 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Slf4j
 public class RoadInfoController extends BaseController{
 
+    @Value("${baidu.ak}")
+    private String baidu_ak;
+
     @Autowired
     private IRoadInfoService roadInfoService;
 
@@ -40,6 +44,7 @@ public class RoadInfoController extends BaseController{
 
     @RequestMapping(value = "/seeMap",name = "跳转地图页面")
     public String seeMap(){
+        request.setAttribute("ak",baidu_ak);
         return "map/first-map";
     }
 

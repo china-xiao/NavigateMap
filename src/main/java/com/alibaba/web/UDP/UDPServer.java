@@ -1,5 +1,7 @@
 package com.alibaba.web.UDP;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -9,7 +11,6 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
-
 import java.util.logging.Logger;
 
 /**
@@ -22,8 +23,10 @@ import java.util.logging.Logger;
 public class UDPServer implements ServletContextListener {
 
     public static Logger logger = Logger.getLogger(UDPServer.class.getName());
-    public static final int MAX_UDP_DATA_SIZE = 4096;
-    public static final int UDP_PORT = 6007;
+    @Value("${UDP.MAX_UDP_DATA_SIZE}")
+    public int MAX_UDP_DATA_SIZE;
+    @Value("${UDP.port}")
+    public int UDP_PORT;
     public static DatagramPacket packet = null;
     public static DatagramSocket socket = null;
 
@@ -43,7 +46,12 @@ public class UDPServer implements ServletContextListener {
 
         public UDPProcess(final int port) throws SocketException {
             //创建服务器端DatagramSocket，指定端口
-            socket = new DatagramSocket(port);
+            try {
+                socket = new DatagramSocket(port);
+                logger.info("=======UDP启用端口:"+port+"======");
+            }catch (Exception e){
+                logger.info("=======端口被占用======");
+            }
         }
 
         @Override
@@ -54,7 +62,7 @@ public class UDPServer implements ServletContextListener {
                 byte[] buffer = new byte[MAX_UDP_DATA_SIZE];
                 packet = new DatagramPacket(buffer, buffer.length);
                 try {
-                    logger.info("=======此方法在接收到数据报之前会一直阻塞======");
+//                    logger.info("=======此方法在接收到数据报之前会一直阻塞======");
                     socket.receive(packet);
                     new Thread(new Process(packet)).start();
                 } catch (IOException e) {
@@ -108,7 +116,7 @@ public class UDPServer implements ServletContextListener {
 
     public static final String SERVER_HOSTNAME = "localhost";
     // 服务器端口
-    public static final int SERVER_PORT = 6007;
+    public static final int SERVER_PORT = 10086;
     // 本地发送端口
     public static final int LOCAL_PORT = 8888;
 

@@ -20,7 +20,7 @@
     <style type="text/css">
         body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
     </style>
-    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=vbGlLhf07pCtZTGj3fkIBLabctlD0q1j"></script>
+    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=${ak}"></script>
     <script src="//libs.baidu.com/jquery/1.9.0/jquery.js"></script>
     <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
 

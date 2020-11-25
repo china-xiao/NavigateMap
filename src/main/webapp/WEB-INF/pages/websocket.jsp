@@ -19,7 +19,7 @@
             //连接
             $scope.connect = function() {
                 //特别注意链接的IP和浏览器访问地址必须保持一致,不然就会出现链接不上的问题
-                var socket = new SockJS('http://127.0.0.1:8448/web/my-websocket');
+                var socket = new SockJS('http://${ip}/web/my-websocket');
                 stompClient = Stomp.over(socket);
                 stompClient.connect({}, function(frame) {
                     // 接收后台服务推送消息
