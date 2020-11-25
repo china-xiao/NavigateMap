@@ -22,7 +22,7 @@ public class MpGenerator {
     public static final String DRIVER = "com.mysql.jdbc.Driver";
     public static final String AUTHOR = "xiaoxh";
     //包名，会按照com/example/demo这种形式生成类
-    public static final String PACKAGE = "com.alibaba.mybatisGenerator.mapper";
+    public static final String PACKAGE = "com.alibaba.web";
 
     public static void generateByTables(String... tableNames) {
         String projectPath = System.getProperty("user.dir");
@@ -59,12 +59,12 @@ public class MpGenerator {
                                 .setService("service")
                                 .setServiceImpl("service.impl")
                                 .setEntity("entity.po")
-                                .setMapper("dao.dao")
-                                .setXml("mapper.dao")
+                                .setMapper("dao")
+                                .setXml("mapper")
                 ).execute();
     }
 
     public static void main(String[] args) {
-        generateByTables(new String[]{"sys_user","sys_role","sys_role_user","sys_role_module","sys_module","sys_log","sys_dept","ss_company"});
+        generateByTables(new String[]{"equipment_info","road_info"});
     }
 }

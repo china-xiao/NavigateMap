@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.web.dao.IEquipmentInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.alibaba.web.entity.po.EquipmentInfo">
+        <id column="id" property="id" />
+        <result column="model_number" property="modelNumber" />
+        <result column="name" property="name" />
+        <result column="state" property="state" />
+        <result column="chartX" property="chartX" />
+        <result column="chartY" property="chartY" />
+        <result column="address" property="address" />
+        <result column="url" property="url" />
+        <result column="created_id" property="createdId" />
+        <result column="created_name" property="createdName" />
+        <result column="updated_id" property="updatedId" />
+        <result column="updated_name" property="updatedName" />
+        <result column="created" property="created" />
+        <result column="updated" property="updated" />
+    </resultMap>
+    <select id="getAll" resultType="com.alibaba.web.entity.po.EquipmentInfo">
+        SELECT * FROM equipment_info
+    </select>
+
+</mapper>

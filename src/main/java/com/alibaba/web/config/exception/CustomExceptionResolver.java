@@ -1,4 +1,4 @@
-package com.alibaba.web.exception;
+package com.alibaba.web.config.exception;
 
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.stereotype.Component;

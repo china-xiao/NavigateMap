@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alibaba.web.dao.IRoadInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.alibaba.web.entity.po.RoadInfo">
+        <id column="id" property="id" />
+        <result column="model_number" property="modelNumber" />
+        <result column="weather" property="weather" />
+        <result column="temperature" property="temperature" />
+        <result column="RTTI" property="rtti" />
+        <result column="created" property="created" />
+    </resultMap>
+    <select id="getRoadInfo" resultType="com.alibaba.web.entity.vo.MapData">
+        SELECT
+        	chartX,
+        	chartY,
+        	`name`,
+        	ei.model_number,
+        	weather,
+        	temperature,
+        	RTTI
+        FROM
+        	equipment_info ei
+        INNER JOIN (
+        	SELECT
+        		a.id,
+        		a.model_number,
+        		a.weather,
+        		a.temperature,
+        		a.RTTI
+        	FROM
+        		(
+        			SELECT
+        				id,
+        				model_number,
+        				weather,
+        				temperature,
+        				RTTI
+        			FROM
+        				road_info
+        			ORDER BY
+        				created DESC
+        		) a
+        	GROUP BY
+        		a.model_number
+        ) b ON b.model_number = ei.model_number
+        WHERE
+        	ei.state = 1
+    </select>
+
+</mapper>

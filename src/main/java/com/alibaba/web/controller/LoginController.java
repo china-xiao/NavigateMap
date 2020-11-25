@@ -4,6 +4,7 @@ import com.alibaba.web.entity.po.SysModule;
 import com.alibaba.web.entity.po.User;
 import com.alibaba.web.service.ISysModuleService;
 import com.alibaba.web.service.ISysUserService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -22,6 +23,7 @@ import java.util.List;
  * @Version: 0.0.1
  **/
 @Controller
+@Slf4j
 public class LoginController extends BaseController{
 
     @Autowired
@@ -71,6 +73,13 @@ public class LoginController extends BaseController{
     public String home(){
         return "home/home";
     }
+
+    @RequestMapping(value = "/1",name = "跳转登录页面")
+    public String index(){
+        log.info("首页....");
+        return "index";
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 package com.alibaba.web.service.impl;
 
+import com.alibaba.web.common.utils.MailUtils;
 import com.alibaba.web.config.shiro.MD5.MD5Pwd;
 import com.alibaba.web.dao.ISysUserMapper;
 import com.alibaba.web.entity.po.User;
@@ -51,12 +52,12 @@ public class SysUserServiceImpl extends ServiceImpl<ISysUserMapper, User> implem
         user.setId(UUID.randomUUID().toString());
         user.setPassword(MD5Pwd.MD5Pwd(user.getEmail(),user.getPassword()));
         userMapper.insert(user);
-//         try {
-//            //发送邮件
-//             MailUtils.sendMsg(user.getEmail(), "遨游云平台内容邮件", "您的账号为：" + user.getEmail() + ",密码为：" + pwd);
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
+         try {
+            //发送邮件
+             MailUtils.sendMsg(user.getEmail(), "遨游云平台内容邮件", "您的账号为：" + user.getEmail() + ",密码为：" + pwd);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

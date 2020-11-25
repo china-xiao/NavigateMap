@@ -83,6 +83,8 @@ public class SysModuleServiceImpl extends ServiceImpl<ISysModuleMapper, SysModul
 
     @Override
     public void toUpdate(SysModule module) {
+        User user = ShiroCurrentUser.currentLoginUser();
+        module.setUpdatedId(user.getId()).setUpdatedName(user.getUserName()).setUpdated(LocalDateTime.now());
         moduleMapper.updateById(module);
     }
 

@@ -7,7 +7,7 @@
   <groupId>com.alibaba</groupId>
   <artifactId>NavigateMap</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -56,6 +56,12 @@
             <artifactId>mybatis-spring</artifactId>
           </exclusion>
         </exclusions>
+      </dependency>
+      <!-- 逆向工程模板引擎 -->
+      <dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity-engine-core</artifactId>
+        <version>2.0</version>
       </dependency>
       <dependency>
         <groupId>com.alibaba</groupId>
@@ -113,24 +119,32 @@
         <version>4.11</version>
         <scope>test</scope>
       </dependency>
-     <!--jsp-->
+      <!--引入springBoot 内嵌的Tomcat对JSP的解析包-->
       <dependency>
         <groupId>org.apache.tomcat.embed</groupId>
         <artifactId>tomcat-embed-jasper</artifactId>
-      </dependency>
-      <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
         <scope>provided</scope>
       </dependency>
+      <!--servlet-->
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
+      </dependency>
+      <!--jsp-->
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
-        <artifactId>javax.servlet.jsp-api</artifactId>
-        <version>2.3.1</version>
+        <artifactId>jsp-api</artifactId>
+        <version>2.2</version>
+        <scope>provided</scope>
       </dependency>
+      <!--jstl-->
       <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>jstl</artifactId>
+        <version>1.2</version>
+        <scope>provided</scope>
       </dependency>
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -159,6 +173,33 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-aop</artifactId>
       </dependency>
+      <!--引入websocket依赖 -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-websocket</artifactId>
+<!--        <exclusions>-->
+<!--          <exclusion>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--          </exclusion>-->
+<!--          <exclusion>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-beans</artifactId>-->
+<!--          </exclusion>-->
+<!--          <exclusion>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-core</artifactId>-->
+<!--          </exclusion>-->
+<!--          <exclusion>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-context</artifactId>-->
+<!--          </exclusion>-->
+<!--          <exclusion>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-web</artifactId>-->
+<!--          </exclusion>-->
+<!--        </exclusions>-->
+      </dependency>
     </dependencies>
 
 
@@ -169,6 +210,15 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <configuration>
+          <encoding>UTF-8</encoding>
+          <useDefaultDelimiters>true</useDefaultDelimiters>
+        </configuration>
+      </plugin>
+
     </plugins>
     <resources>
       <!--将src/main/java下的xml文件编译成字节码文件-->
@@ -179,15 +229,16 @@
         </includes>
       </resource>
       <!--将配置文件也编译成字节码文件-->
-<!--      <resource>-->
-<!--        <directory>src/main/resources</directory>-->
-<!--        <includes>-->
-<!--          <include>**/*.*</include>-->
-<!--        </includes>-->
-<!--      </resource>-->
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*.*</include>
+        </includes>
+      </resource>
       <!--将jsp文件编译成字节码文件-->
       <resource>
         <directory>src/main/webapp</directory>
+<!--        <targetPath>META-INF/classes</targetPath>-->
         <targetPath>META-INF/resources</targetPath>
         <includes>
           <include>**/*.*</include>

@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8448
   servlet:
     context-path: /web
     jsp:
@@ -40,10 +40,7 @@ spring:
   mvc:
     view:
       prefix: /WEB-INF/pages/
-#      prefix: /
       suffix: .jsp
-  #  resources:
-#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
   main:
     allow-bean-definition-overriding: true
   servlet:

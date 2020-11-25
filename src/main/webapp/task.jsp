@@ -29,8 +29,8 @@
     function addTask() {
         consoleValue();
         if(task){
-            //setTimeout方法的意思就是每60秒中执行一次addTask()方法
-            setTimeout("addTask()",60000);
+            //setTimeout方法的意思就是每1秒中执行一次addTask()方法
+            setTimeout("addTask()",1);
         }
         //task是全局变量，执行了取消方法后，在执行开启定时任务方法，表达式为false，定时任务不能继续执行，所以要设置为true
         task=true;
