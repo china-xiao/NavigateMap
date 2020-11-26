@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * @Author: xiaoxh
@@ -62,9 +61,9 @@ public class App extends BaseController {
     //定时5秒给页面推一次数据
     @Scheduled(cron="0/5 * * * * ?")
     public Object callback() throws Exception {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        System.out.println("推送消息了"+df.format(new Date()));
-        log.info("websocket推送消息,时间-"+df.format(new Date()));
+//        log.info("websocket推送消息,时间-"+df.format(new Date()));
         //向页面这个地址推送消息
         messagingTemplate.convertAndSend("/topic/callback","客户端消息"+count );
         count++;

@@ -2,9 +2,9 @@ package com.alibaba.web.common.Socket.Config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
-import org.springframework.web.socket.config.annotation.AbstractWebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 /**
  * @Author: xiaoxh
@@ -14,11 +14,11 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
  **/
 @Configuration
 @EnableWebSocketMessageBroker
-public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        //设置浏览器接收的服务前缀,同时也是后台服务推送的前缀
+        //设置浏览器接收的服务前缀,同时也是后台服务推送的前缀    WebSocketMessageBrokerConfigurer,AbstractWebSocketMessageBrokerConfigurer
         config.enableSimpleBroker("/topic");
         //设置浏览器发送消息的服务前缀,也就是后台服务接收前台信息的前缀
         config.setApplicationDestinationPrefixes("/app");

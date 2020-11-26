@@ -9,7 +9,8 @@ server:
     location: banner.txt
 spring:
   profiles:
-    active: local-153
+    active: local
+#    active: local-153
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
