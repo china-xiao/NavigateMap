@@ -32,7 +32,12 @@ public class RoadInfoServiceImpl extends ServiceImpl<IRoadInfoMapper, RoadInfo> 
     @Override
     public PageInfo<RoadInfo> getList(int page, int size, String modelNumber) {
         PageHelper.startPage(page, size);
-        List<RoadInfo> list = this.list(new QueryWrapper<RoadInfo>().eq("model_number", modelNumber).orderByDesc("created"));
+        List<RoadInfo> list;
+        if (modelNumber!=null && modelNumber !=""){
+            list = this.list(new QueryWrapper<RoadInfo>().eq("model_number", modelNumber).orderByDesc("created"));
+        }else {
+            return new PageInfo<>(null);
+        }
         return new PageInfo<>(list);
     }
 

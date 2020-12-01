@@ -22,7 +22,7 @@
     </style>
     <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=${ak}"></script>
     <script src="//libs.baidu.com/jquery/1.9.0/jquery.js"></script>
-    <script src="../../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 
 </head>
 <body>
@@ -36,7 +36,7 @@
 </body>
 
 <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="../../plugins/echarts/echarts.min.js"></script>
+<script src="../plugins/echarts/echarts.min.js"></script>
 <script type="text/javascript">
     var task=true;
     // 百度地图API功能
