@@ -36,23 +36,14 @@ public class LoginController extends BaseController{
     public String login(String email,String password){
 
         try {
-            //如果用户账号或密码为空，则跳转到登录页面
             if(StringUtils.isEmpty(email)||StringUtils.isEmpty(password)){
                 return "redirect:/login.jsp";
             }
-            //1、获得Subject对象
             Subject subject = SecurityUtils.getSubject();
-            //2、构建用户名和密码对象 :AuthenticationToken
             UsernamePasswordToken upToken = new UsernamePasswordToken(email,password);
-            //3、借助subject对象执行登录
-            subject.login(upToken); //如果登录失败，则抛异常
-            //4、得到用户对象
+            subject.login(upToken);
             User loginUser = (User) subject.getPrincipal();
-
-            //把用户对象保存到session域中
             session.setAttribute("loginUser",loginUser);
-
-            //查询菜单列表
             List<SysModule> moduleList = moduleService.findModules(loginUser);
             session.setAttribute("modules",moduleList);
             return "home/main";
@@ -65,7 +56,7 @@ public class LoginController extends BaseController{
     //退出
     @RequestMapping(value = "/logout",name="用户登出")
     public String logout(){
-        SecurityUtils.getSubject().logout();   //登出
+        SecurityUtils.getSubject().logout();
         return "forward:login.jsp";
     }
 
