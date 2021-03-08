@@ -1,5 +1,6 @@
 package com.alibaba.web.UDP;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.ServletContextEvent;
@@ -82,6 +83,8 @@ public class UDPServer implements ServletContextListener {
             //            logger.info("=======Process srt1 GBK======" + srt1);
             String srt2 = new String(buffer, "UTF-8").trim();
             logger.info("=======Process srt2 UTF-8======" + srt2);
+            Object parse = JSONObject.parse(srt2);
+
 //            String srt3 = new String(buffer, "ISO-8859-1").trim();
 //            logger.info("=======Process srt3 ISO-8859-1======" + srt3);
         }
@@ -114,7 +117,7 @@ public class UDPServer implements ServletContextListener {
 
 
 
-    public static final String SERVER_HOSTNAME = "localhost";
+    public static final String SERVER_HOSTNAME = "8.140.139.188";
     // 服务器端口
     public static final int SERVER_PORT = 10086;
     // 本地发送端口
