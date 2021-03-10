@@ -1,6 +1,7 @@
 webSocketServerIP: 127.0.0.1:8448
 baidu:
-  ak: vbGlLhf07pCtZTGj3fkIBLabctlD0q1j
+#  ak: vbGlLhf07pCtZTGj3fkIBLabctlD0q1j
+  ak: 9Iv7gIWQAbTlEOOpGQf0lZsaS71yR4dU
 UDP:
   port: 10086
   MAX_UDP_DATA_SIZE: 4096
