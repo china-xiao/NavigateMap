@@ -76,9 +76,10 @@
                             </th>
                             <th class="sorting">序号</th>
                             <th class="sorting">设备编号</th>
-                            <th class="sorting">天气</th>
-                            <th class="sorting">温度</th>
-                            <th class="sorting">实时路况信息</th>
+                            <th class="sorting">堵车信息</th>
+                            <th class="sorting">风速</th>
+                            <th class="sorting">烟雾</th>
+                            <th class="sorting">雨水</th>
                             <th class="sorting">创建时间</th>
                         </tr>
                         </thead>
@@ -88,9 +89,10 @@
                                 <td><input type="checkbox" name="id" value="${info.id }"/></td>
                                 <td>${st.count }</td>
                                 <td>${info.modelNumber }</td>
-                                <td>${info.weather } </td>
-                                <td>${info.temperature }</td>
-                                <td>${info.rtti }</td>
+                                <td>${info.duche } </td>
+                                <td>${info.fengsu }</td>
+                                <td>${info.yanwu }</td>
+                                <td>${info.yudi }</td>
                                 <td>${info.created }</td>
                             </tr>
                         </c:forEach>

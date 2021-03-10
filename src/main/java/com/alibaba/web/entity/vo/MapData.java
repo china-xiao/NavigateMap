@@ -25,5 +25,9 @@ public class MapData {
     private String temperature;
 
     private String RTTI;
+    private String fengsu;
+    private String yanwu;
+    private String yudi;
+    private String duche;
 
 }

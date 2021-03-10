@@ -52,5 +52,13 @@ public class RoadInfo implements Serializable {
      */
     private LocalDateTime created;
 
+    /**
+     * 实时路况信息
+     */
+    private String fengsu;
+    private String yanwu;
+    private String yudi;
+    private String duche;
+
 
 }

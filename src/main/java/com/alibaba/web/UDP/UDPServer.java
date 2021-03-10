@@ -1,6 +1,11 @@
 package com.alibaba.web.UDP;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.web.controller.SysRoleUserController;
+import com.alibaba.web.entity.po.EquipmentInfo;
+import com.alibaba.web.entity.po.RoadInfo;
+import com.alibaba.web.service.IEquipmentInfoService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.ServletContextEvent;
@@ -12,6 +17,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 /**
@@ -30,6 +36,12 @@ public class UDPServer implements ServletContextListener {
     public int UDP_PORT;
     public static DatagramPacket packet = null;
     public static DatagramSocket socket = null;
+
+    @Autowired
+    private SysRoleUserController roleUserController;
+
+    @Autowired
+    private IEquipmentInfoService equipmentInfoService;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -75,6 +87,9 @@ public class UDPServer implements ServletContextListener {
     }
 
     class Process implements Runnable {
+
+        private String reInfo;
+
         public Process(DatagramPacket packet) throws UnsupportedEncodingException {
             // TODO Auto-generated constructor stub
             logger.info("=======接收到的UDP信息======");
@@ -83,10 +98,52 @@ public class UDPServer implements ServletContextListener {
             //            logger.info("=======Process srt1 GBK======" + srt1);
             String srt2 = new String(buffer, "UTF-8").trim();
             logger.info("=======Process srt2 UTF-8======" + srt2);
-            Object parse = JSONObject.parse(srt2);
+            String info = parseData(srt2);
+            reInfo = info;
 
 //            String srt3 = new String(buffer, "ISO-8859-1").trim();
 //            logger.info("=======Process srt3 ISO-8859-1======" + srt3);
+        }
+
+        private String parseData(String srt2) {
+            if (srt2!=null && srt2.length()==8){
+                RoadInfo roadInfo = new RoadInfo();
+                roadInfo.setId(UUID.randomUUID().toString());
+                String modelNumber = srt2.substring(0, 2);
+                int count = equipmentInfoService.count(new QueryWrapper<EquipmentInfo>().eq("model_number", modelNumber).eq("state", 1));
+                if (count==0){
+                    logger.info("该设备不可用");
+                    return "该设备不可用";
+                }
+                roadInfo.setModelNumber(modelNumber);
+                String ducheInfo = srt2.substring(2, 3);
+                if (ducheInfo.equals("0")){
+                    roadInfo.setDuche("不堵车");
+                }else if (ducheInfo.equals("1")){
+                    roadInfo.setDuche("堵车");
+                }
+                String fengsuInfo = srt2.substring(3, 6);
+                if (fengsuInfo!=null){
+                    roadInfo.setFengsu(fengsuInfo);
+                }
+                String yanwuInfo = srt2.substring(6, 7);
+                if (yanwuInfo.equals("0")){
+                    roadInfo.setYanwu("无烟雾");
+                }else if (yanwuInfo.equals("1")){
+                    roadInfo.setYanwu("有雾");
+                }
+                String yudiInfo = srt2.substring(srt2.length()-1);
+                if (yudiInfo.equals("0")){
+                    roadInfo.setYudi("无雨");
+                }else if (yudiInfo.equals("1")){
+                    roadInfo.setYudi("有雨");
+                }
+                roleUserController.edit(roadInfo);
+            }else {
+                logger.info("设备传入数据位数不足");
+                return "设备传入数据位数不足";
+            }
+            return "成功";
         }
 
         @Override
@@ -98,7 +155,8 @@ public class UDPServer implements ServletContextListener {
                 //1.定义客户端的地址、端口号、数据
                 InetAddress address = packet.getAddress();
                 int port = packet.getPort();
-                byte[] data2 = "{'request':'alive','errcode':'0'}".getBytes();
+                String re= "{'request':'alive','info':"+reInfo+"}";
+                byte[] data2 =re.getBytes();
                 //2.创建数据报，包含响应的数据信息
                 DatagramPacket packet2 = new DatagramPacket(data2, data2.length, address, port);
                 //3.响应客户端
@@ -116,8 +174,8 @@ public class UDPServer implements ServletContextListener {
     }
 
 
-
-    public static final String SERVER_HOSTNAME = "8.140.139.188";
+//8.140.139.188
+    public static final String SERVER_HOSTNAME = "127.0.0.1";
     // 服务器端口
     public static final int SERVER_PORT = 10086;
     // 本地发送端口
@@ -129,7 +187,7 @@ public class UDPServer implements ServletContextListener {
             DatagramSocket socket = new DatagramSocket(LOCAL_PORT);
             // 2，确定数据，并封装成数据包。DatagramPacket(byte[] buf, int length, InetAddress
             // address, int port)
-            byte[] buf = "你好，世界".getBytes();
+            byte[] buf = "07032910".getBytes();
             DatagramPacket dp = new DatagramPacket(buf, buf.length, InetAddress.getByName(SERVER_HOSTNAME),
                     SERVER_PORT);
             // 3，通过socket服务，将已有的数据包发送出去。通过send方法。

@@ -19,7 +19,11 @@
         	ei.model_number,
         	weather,
         	temperature,
-        	RTTI
+        	RTTI,
+        	fengsu,
+        	yanwu,
+        	yudi,
+        	duche
         FROM
         	equipment_info ei
         INNER JOIN (
@@ -28,7 +32,11 @@
         		a.model_number,
         		a.weather,
         		a.temperature,
-        		a.RTTI
+        		a.RTTI,
+        		a.fengsu,
+        		a.yanwu,
+        		a.yudi,
+        		a.duche
         	FROM
         		(
         			SELECT
@@ -36,7 +44,11 @@
         				model_number,
         				weather,
         				temperature,
-        				RTTI
+        				RTTI,
+        				fengsu,
+        				yanwu,
+        				yudi,
+        				duche
         			FROM
         				road_info
         			ORDER BY

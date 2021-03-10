@@ -101,7 +101,8 @@
                 map.clearOverlays();
                 for(var i=0;i<obj.length;i++){
                     var marker = new BMap.Marker(new BMap.Point(obj[i].chartX,obj[i].chartY));  // 创建标注
-                    var content = "设备编号:"+obj[i].modelNumber+'<br/>拥堵状况:'+obj[i].rTTI+'<br/>天气:'+obj[i].weather+'<br/>温度:'+obj[i].temperature;
+                    var content = "设备编号:"+obj[i].modelNumber+'<br/>拥堵状况:'+obj[i].duche+'<br/>风速:'+obj[i].fengsu+'<br/>烟雾:'+obj[i].yanwu
+                        +'<br/>雨滴:'+obj[i].yudi;
                     map.addOverlay(marker);
                     // 将标注添加到地图中
                     addClickHandler(content,marker);

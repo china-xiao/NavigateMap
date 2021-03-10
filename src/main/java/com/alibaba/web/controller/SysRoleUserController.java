@@ -51,7 +51,7 @@ public class SysRoleUserController extends BaseController{
     @PostMapping(value = "/edit",name="新增道路信息")
     public String edit(RoadInfo roadInfo){
         try {
-            if(StringUtils.isEmpty(roadInfo.getId()) && StringUtils.isEmpty(roadInfo.getModelNumber())){
+            if(!StringUtils.isEmpty(roadInfo.getId()) && !StringUtils.isEmpty(roadInfo.getModelNumber())){
                 roadInfoService.toSave(roadInfo);
                 return "success";
             }
