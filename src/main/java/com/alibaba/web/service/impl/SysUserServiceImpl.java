@@ -5,6 +5,7 @@ import com.alibaba.web.config.shiro.MD5.MD5Pwd;
 import com.alibaba.web.dao.ISysUserMapper;
 import com.alibaba.web.entity.po.User;
 import com.alibaba.web.service.ISysUserService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -49,6 +50,11 @@ public class SysUserServiceImpl extends ServiceImpl<ISysUserMapper, User> implem
     @Override
     public void toSave(User user) {
         String pwd = user.getPassword();
+        User email = userMapper.selectOne(new QueryWrapper<User>().eq("email", user.getEmail()).orderByDesc("created"));
+        if (email!=null){
+            log.error("该账号已存在");
+            return;
+        }
         user.setId(UUID.randomUUID().toString());
         user.setPassword(MD5Pwd.MD5Pwd(user.getEmail(),user.getPassword()));
         userMapper.insert(user);
