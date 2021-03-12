@@ -12,53 +12,22 @@
         <result column="created" property="created" />
     </resultMap>
     <select id="getRoadInfo" resultType="com.alibaba.web.entity.vo.MapData">
-        SELECT
-        	chartX,
-        	chartY,
-        	`name`,
-        	ei.model_number,
-        	weather,
-        	temperature,
-        	RTTI,
-        	fengsu,
-        	yanwu,
-        	yudi,
-        	duche
-        FROM
-        	equipment_info ei
-        INNER JOIN (
-        	SELECT
-        		a.id,
-        		a.model_number,
-        		a.weather,
-        		a.temperature,
-        		a.RTTI,
-        		a.fengsu,
-        		a.yanwu,
-        		a.yudi,
-        		a.duche
-        	FROM
-        		(
-        			SELECT
-        				id,
-        				model_number,
-        				weather,
-        				temperature,
-        				RTTI,
-        				fengsu,
-        				yanwu,
-        				yudi,
-        				duche
-        			FROM
-        				road_info
-        			ORDER BY
-        				created DESC
-        		) a
-        	GROUP BY
-        		a.model_number
-        ) b ON b.model_number = ei.model_number
-        WHERE
-        	ei.state = 1
+		SELECT
+		ei.chartX,
+		ei.chartY,
+		ei.`name`,
+		ei.model_number,
+		b.weather,
+		b.temperature,
+		b.RTTI,
+		b.fengsu,
+		b.yanwu,
+		b.yudi,
+		b.duche
+		FROM equipment_info ei
+		INNER JOIN (SELECT ri.* FROM (SELECT model_number, MAX(created) created FROM road_info GROUP BY model_number) a
+		LEFT JOIN road_info ri ON ri.model_number=a.model_number AND ri.created=a.created) b ON b.model_number=ei.model_number
+		WHERE ei.state=1
     </select>
 
 </mapper>
